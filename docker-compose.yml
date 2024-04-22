@@ -1,9 +1,16 @@
-version: '3.8'
+# version: '3.8'
 
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "3000:3000"
+
+version: '3.8'
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  my_service:
+    image: sulavadk7/wp-image:stable
     ports:
-      - "3000:3000"
+      - "3000:3000" 

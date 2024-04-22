@@ -20,10 +20,9 @@ jobs:
                   password: ${{ secrets.DOCKER_PASSWORD }}
             
             - name: Build docker image
-              run: docker-compose build
-
-            - name: Push docker image
-              run: docker-compose push
+              run: |
+               docker build -t sulavadk7/wp-image:stable .
+               docker push sulavadk7/wp-image:stable
 
             - name: SSh into EC2
               uses: appleboy/ssh-action@v1.0.3
@@ -32,5 +31,7 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   key: ${{ secrets.KEY }}
                   run: |
-                    docker compose pull
-                    docker compose up 
+                    scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu
+
+                    docker-compose -f /home/ubuntu/docker-compose.yml pull
+                    docker-compose -f /home/ubuntu/docker-compose.yml up 
