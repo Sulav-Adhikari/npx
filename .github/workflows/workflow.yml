@@ -30,7 +30,14 @@ jobs:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
                   key: ${{ secrets.KEY }}
-                  run: |
-                    scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
-                    docker compose -f /home/ubuntu/docker/docker-compose.yml pull
-                    docker compose -f /home/ubuntu/docker/docker-compose.yml up 
+
+                  run: | 
+                    docker pull sulavadk7/wp-image:stable
+                    dokcer run -d -p 3000:3000 sulavadk7/wp-image:stable
+
+            
+ 
+                #   run: |
+                #     scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
+                #     docker compose -f /home/ubuntu/docker/docker-compose.yml pull
+                #     docker compose -f /home/ubuntu/docker/docker-compose.yml up 
