@@ -32,7 +32,7 @@ jobs:
                 key: ${{ secrets.KEY }}
                 script: |
 
-                 scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:ubuntu/docker
+                 scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
                  sudo docker compose -f /home/ubuntu/docker/docker-compose.yml pull
                  sudo docker compose -f /home/ubuntu/docker/docker-compose.yml up 
 
