@@ -26,7 +26,7 @@ jobs:
               run: docker-compose push
 
             - name: SSh into EC2
-              uses: appleboy/ssh-action@v0.3.0
+              uses: appleboy/ssh-action@v1.0.3
               with:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
