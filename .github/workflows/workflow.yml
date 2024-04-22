@@ -32,8 +32,8 @@ jobs:
                   key: ${{ secrets.KEY }}
 
                   run: | 
-                    docker pull sulavadk7/wp-image:stable
-                    dokcer run -d -p 3000:3000 sulavadk7/wp-image:stable
+                    sudo docker pull sulavadk7/wp-image:stable
+                    sudo docker run -d -p 3000:3000 sulavadk7/wp-image:stable
 
             
  
