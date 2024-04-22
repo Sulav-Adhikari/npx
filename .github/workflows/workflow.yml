@@ -44,7 +44,7 @@ jobs:
                 script: |
 
                  sudo docker compose -f /home/ubuntu/docker/docker-compose.yml pull
-                 sudo docker compose -f /home/ubuntu/docker/docker-compose.yml up 
+                 sudo docker compose -f /home/ubuntu/docker/docker-compose.yml up -d
 
                 # sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wp-image:stable && sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/wp-image:stable
                 # scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
