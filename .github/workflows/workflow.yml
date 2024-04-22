@@ -24,6 +24,17 @@ jobs:
                docker build -t sulavadk7/wp-image:stable .
                docker push sulavadk7/wp-image:stable
 
+            - name: Scp docker-compose.yml
+              uses: appleboy/scp-action@v0.1.7
+              with:
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                key: ${{ secrets.KEY }}
+                source: "docker-compose.yml"
+                target: "/home/ubuntu/docker"
+                
+
+
             - name: SSh into EC2
               uses: appleboy/ssh-action@v1.0.3
               with:
@@ -32,11 +43,11 @@ jobs:
                 key: ${{ secrets.KEY }}
                 script: |
 
-                 scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
                  sudo docker compose -f /home/ubuntu/docker/docker-compose.yml pull
                  sudo docker compose -f /home/ubuntu/docker/docker-compose.yml up 
 
                 # sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wp-image:stable && sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/wp-image:stable
+                # scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
 
                   
 
