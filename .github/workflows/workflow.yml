@@ -31,13 +31,16 @@ jobs:
                 username: ${{ secrets.USERNAME }}
                 key: ${{ secrets.KEY }}
                 script: |
-                 sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wp-image:stable && sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/wp-image:stable
+
+                 scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
+                 docker compose -f /home/ubuntu/docker/docker-compose.yml pull
+                 docker compose -f /home/ubuntu/docker/docker-compose.yml up 
+
+                # sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wp-image:stable && sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/wp-image:stable
 
                   
 
             
  
-                #   run: |
-                #     scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
-                #     docker compose -f /home/ubuntu/docker/docker-compose.yml pull
-                #     docker compose -f /home/ubuntu/docker/docker-compose.yml up 
+ 
+
