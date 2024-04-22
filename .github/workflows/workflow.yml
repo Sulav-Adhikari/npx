@@ -27,13 +27,12 @@ jobs:
             - name: SSh into EC2
               uses: appleboy/ssh-action@v1.0.3
               with:
-                  host: ${{ secrets.HOST }}
-                  username: ${{ secrets.USERNAME }}
-                  key: ${{ secrets.KEY }}
-
-                  run: | 
-                    sudo docker pull sulavadk7/wp-image:stable
-                    sudo docker run -d -p 3000:3000 sulavadk7/wp-image:stable
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                key: ${{ secrets.KEY }}
+                run: |
+                  sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wp-image:stable
+                  sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/wp-image:stable
 
             
  
