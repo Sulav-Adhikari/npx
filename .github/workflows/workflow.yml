@@ -30,7 +30,7 @@ jobs:
                 host: ${{ secrets.HOST }}
                 username: ${{ secrets.USERNAME }}
                 key: ${{ secrets.KEY }}
-                run: |
+                script: |
                  sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wp-image:stable && sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/wp-image:stable
 
                   
