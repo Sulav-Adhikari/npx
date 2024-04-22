@@ -31,7 +31,6 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   key: ${{ secrets.KEY }}
                   run: |
-                    scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu
-
-                    docker-compose -f /home/ubuntu/docker-compose.yml pull
-                    docker-compose -f /home/ubuntu/docker-compose.yml up 
+                    scp -i ${{ secrets.KEY }} docker-compose.yml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/ubuntu/docker
+                    docker compose -f /home/ubuntu/docker/docker-compose.yml pull
+                    docker compose -f /home/ubuntu/docker/docker-compose.yml up 
