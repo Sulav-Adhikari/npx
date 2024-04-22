@@ -13,4 +13,4 @@ services:
   my_service:
     image: sulavadk7/wp-image:stable
     ports:
-      - "80:80" 
+      - "3000:3000" 

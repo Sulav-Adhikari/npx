@@ -22,6 +22,6 @@ RUN npm install
 
 COPY --from=build /usr/src/app/.next ./.next
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["npm", "start"]
